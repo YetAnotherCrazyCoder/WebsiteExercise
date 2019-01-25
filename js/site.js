@@ -65,6 +65,6 @@ function getText() {
                 this.responseText;
         }
     };
-    xhttp.open("GET", "http://api.irishrail.ie/realtime/realtime.asmx/getStationDataByCodeXML?StationCode=cork", true);
+    xhttp.open("GET", "https://api.irishrail.ie/realtime/realtime.asmx/getStationDataByNameXML?StationDesc=Cork", true);
     xhttp.send();
 }
