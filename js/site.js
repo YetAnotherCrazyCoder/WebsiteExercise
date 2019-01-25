@@ -56,7 +56,7 @@
 // document.URL	Returns the complete URL of the document	1
 
 function getText() {
-    console.log("runing script :)");
+    console.log("runing getText script...");
     
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
