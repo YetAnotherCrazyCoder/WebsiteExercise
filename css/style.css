@@ -92,8 +92,12 @@ nav a {
 
 nav a:hover {
     background-color: rgba(20, 20, 20, 1);
-    color: white;
+    color: rgb(255, 245, 215);
 }
+
+nav a:visited {
+    color: rgb(255, 230, 205);
+  }
 
 nav i{
     font-size: 1.6rem;
@@ -133,7 +137,7 @@ nav .icon {
         padding: 5px 10px;
 
     }
-    
+
     nav{
         height: 100%;
     }
@@ -141,6 +145,7 @@ nav .icon {
     nav a:not(:first-child) {
         display: none;
     }
+
     nav a.icon {
       float: right;
       display: block;

@@ -62,6 +62,7 @@ window.onload = getText();
 function getText() {
     console.log("runing getText script...");
     
+    //Part 1.4 Use XMLHttpRequest objects to comunicate data
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -76,10 +77,17 @@ function getText() {
 
 //Part 1.2 Use JS for DOM manipulation
 function switchNavbar() {
-    var x = document.getElementById("navBar");
-    if (x.className === "topnav") {
-      x.className += " responsive";
+    var navbar = document.getElementById("navBar");
+    var navbtn = document.getElementById("navbtn");
+    if (navbar.className === "topnav") {
+      navbar.className += " responsive";
     } else {
-      x.className = "topnav";
+      navbar.className = "topnav";
     }
+
+    if (navbtn.className === "fa fa-bars") {
+        navbtn.className = "fas fa-times";
+      } else {
+        navbtn.className = "fa fa-bars";
+      }
   }
