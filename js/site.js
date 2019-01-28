@@ -55,6 +55,10 @@
 // document.title	Returns the <title> element	1
 // document.URL	Returns the complete URL of the document	1
 
+
+//Part 1.2 Use JS for handling events
+window.onload = getText();
+
 function getText() {
     console.log("runing getText script...");
     
@@ -69,6 +73,8 @@ function getText() {
     xhttp.send();
 }
 
+
+//Part 1.2 Use JS for DOM manipulation
 function switchNavbar() {
     var x = document.getElementById("navBar");
     if (x.className === "topnav") {
