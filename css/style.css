@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
 
 html, body{
     margin: 0;
     padding: 0;
     font-size: 18px;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .intro{
@@ -90,23 +92,28 @@ nav a {
     line-height: 50px;
 }
 
-nav a:hover {
-    background-color: rgba(20, 20, 20, 1);
-    color: rgb(255, 245, 215);
-}
-
 nav a:visited {
     color: rgb(255, 230, 205);
-  }
+}
+
+nav a:hover {
+    background-color: rgba(20, 20, 20, 1);
+    color: rgb(253, 238, 222);
+}
 
 nav i{
-    font-size: 1.6rem;
     font-weight: normal;
     vertical-align: middle;
 }
 
-.fab, .fas{
-    line-height: 1.8;
+nav i.fab{
+    font-size: 1.4rem;
+    line-height: 50px;
+}
+
+nav i.fas{
+    font-size: 1.3rem;
+    line-height: 50px;
 }
 
 .float-left{
@@ -127,6 +134,10 @@ nav .icon {
 }
   
 @media screen and (max-width: 600px) {
+    body{
+        font-size: 90%;
+    }
+
     .content h1{
         font-size: 250%;
     }
@@ -142,6 +153,10 @@ nav .icon {
         height: 100%;
     }
 
+    nav a{
+        line-height: 40px;
+    }
+
     nav a:not(:first-child) {
         display: none;
     }
@@ -149,6 +164,16 @@ nav .icon {
     nav a.icon {
       float: right;
       display: block;
+    }
+
+    nav i.fab{
+        font-size: 1.2rem;
+        line-height: 40px;
+    }
+    
+    nav i.fas{
+        font-size: 1rem;
+        line-height: 40px;
     }
 }
   

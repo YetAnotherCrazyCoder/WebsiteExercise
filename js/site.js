@@ -57,12 +57,32 @@
 
 
 //Part 1.2 Use JS for handling events
-window.onload = getText();
+window.onload = RunScripts();
 
+function RunScripts(){
+    getText();
+}
+
+//Part 1.2 Use JS for DOM manipulation
+function switchNavbar() {
+    var navbar = document.getElementById("navBar");
+    var navbtn = document.getElementById("navbtn");
+
+    if (navbar.className === "topnav") {
+        navbar.className += " responsive";
+    } else {
+        navbar.className = "topnav";
+    }
+
+    if (navbtn.className === "fa fa-bars") {
+        navbtn.className = "fas fa-times";
+    } else {
+        navbtn.className = "fa fa-bars";
+    }
+}
+
+//Part 1.4 Use XMLHttpRequest objects to comunicate data
 function getText() {
-    console.log("runing getText script...");
-    
-    //Part 1.4 Use XMLHttpRequest objects to comunicate data
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -74,20 +94,49 @@ function getText() {
     xhttp.send();
 }
 
+//Part 1.6.2 Collect user location data
+var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+};
 
-//Part 1.2 Use JS for DOM manipulation
-function switchNavbar() {
-    var navbar = document.getElementById("navBar");
-    var navbtn = document.getElementById("navbtn");
-    if (navbar.className === "topnav") {
-      navbar.className += " responsive";
-    } else {
-      navbar.className = "topnav";
+var userLocation;
+
+function getLocation() {
+    userLocation = document.getElementById('location');
+    if(userLocation){
+        console.log(location.innerHTML);
+        userLocation.scrollIntoView();
     }
+    console.log("running location script");
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(showPosition, showError);
+    } else {
+        userLocation.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
 
-    if (navbtn.className === "fa fa-bars") {
-        navbtn.className = "fas fa-times";
-      } else {
-        navbtn.className = "fa fa-bars";
-      }
-  }
+function showPosition(position) {
+    console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
+    userLocation.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+}
+
+function showError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            userLocation.innerHTML = "You denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            userLocation.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            userLocation.innerHTML = "The request to get your location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            userLocation.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+
