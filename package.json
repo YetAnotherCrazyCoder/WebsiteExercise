@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/YetAnotherCrazyCoder/WebsiteExercise#readme",
   "dependencies": {
-    "netlify-lambda": "^1.3.0"
+    "netlify-lambda": "^1.3.0",
+    "request": "^2.88.0"
   }
 }
