@@ -132,8 +132,41 @@ nav i.fas{
 nav .icon {
     display: none;
 }
+
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+  }
   
-@media screen and (max-width: 600px) {
+  .columns {
+    margin-top: 20px;
+  }
+  
+  .columns .column {
+    float: left;
+    text-align: center;
+    width: 30%;
+    padding: 10px;
+  }
+
+  .columns .column h3{
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .columns .column i{
+    width:90px;
+  }
+
+  footer {
+    padding: 20px;
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #e8491d;
+    text-align: center;
+  }
+  
+@media screen and (max-width: 780px) {
     body{
         font-size: 90%;
     }
@@ -175,9 +208,15 @@ nav .icon {
         font-size: 1rem;
         line-height: 40px;
     }
+
+    .columns .column{
+        float: none;
+        text-align: center;
+        width: 100%
+      }
 }
   
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 780px) {
     nav.responsive .icon {
       position: absolute;
       right: 0;
@@ -189,3 +228,11 @@ nav .icon {
       text-align: left;
     }
 }
+
+
+
+
+
+/* --------------------------------------------------------------------------------------- */
+
+
