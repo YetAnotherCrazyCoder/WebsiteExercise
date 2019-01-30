@@ -111,7 +111,7 @@ function getLocation() {
     }
     console.log("running location script");
     if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(showPosition, showError);
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
         userLocation.innerHTML = "Geolocation is not supported by this browser.";
     }
@@ -119,8 +119,17 @@ function getLocation() {
 
 function showPosition(position) {
     console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
-    userLocation.innerHTML = "Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude;
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            userLocation.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude + "<br>Weather :" + this.responseText;
+                
+        }
+    };
+    xhttp.open("GET", `https://webpage-exercise-arek.netlify.com/.netlify/functions/weather?lon=${position.coords.longitude}&lat=${position.coords.latitude}`, true);
+    xhttp.send();
 }
 
 function showError(error) {
