@@ -174,7 +174,7 @@ function startWorker() {
             resultDisplay.innerHTML = "Sorry, your browser does not support Web Workers...";
         }
     } catch (error) {
-        resultDisplay.innerHTML = error;
+        resultDisplay.innerHTML = "";
     }
 
 }
