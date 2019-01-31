@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 
 <head>
     <meta charset="UTF-8">
@@ -13,10 +13,7 @@
 </head>
 
 <body>
-    <header>
-
-    </header>
-    <section class="intro">
+    <header class="intro">
         <div class="inner">
             <div class="content">
                 <section class="animated">
@@ -25,41 +22,74 @@
                 </section>
             </div>
         </div>
-    </section>
+    </header>
 
     <nav class="topnav" id="navBar">
-        <a href="#"><i class="fas fa-home"></i>&nbsp;Home</a>
-        <a href="#"><i class="fab fa-html5"></i>&nbsp;HTM5</a>
-        <a href="#"><i class="fab fa-css3"></i>CSS3</a>
-        <a href="#"><i class="fab fa-js"></i>&nbsp;JavaScript</a>
-        <a onclick="getLocation(); return false;" href="#"><i class="far fa-map"></i>&nbsp;Location</a>
+        <output id="result"></output>
+        <a class="active" href="index.html"><i class="fas fa-home"></i>&nbsp;Home</a>
+        <a href="html.html"><i class="fab fa-html5"></i>&nbsp;HTM5</a>
+        <a href="media.html"><i class="fas fa-video"></i>&nbsp;Media</a>
+        <a onclick="getLocation(); return false;" href="geolocation.html"><i class="far fa-map"></i>&nbsp;Location</a>
+        <a href="css.html"><i class="fab fa-css3"></i>CSS3</a>
+        <a href="js.html"><i class="fab fa-js"></i>&nbsp;JavaScript</a>
         <a href="#"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a>
         <a href="javascript:void(0);" class="icon" onclick="switchNavbar()"><i id="navbtn" class="fa fa-bars"></i></a>
     </nav>
 
-    <section class="columns">
-        <div class="container">
-          <div class="column">
-            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQtR-oeZx6qOFvLd5BzsSjua74kZGDVsHLeKVHZlRYx314HLsRC3Q">
-            <h3>HTML5</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ratione ipsum laboriosam alias aspernatur! </p>
-          </div>
-          <div class="column">
-            <img src="data:image/png;base64,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">
-            <h3>CSS3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ratione ipsum laboriosam alias aspernatur! </p>
-          </div>
-          <div class="column">
-            <img src="https://s-media-cache-ak0.pinimg.com/236x/f9/a6/75/f9a6750906736de035268e147e6f67c6.jpg">
-            <h3>JavaScript</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ratione ipsum laboriosam alias aspernatur! </p>
-          </div>
-        </div>
-      </section>
+    <main class="columns">
+        <article class="container">
+            <section class="column">
+                <img src="media/html.svg">
+                <h3>HTML5</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates earum blanditiis, quae quia at
+                    ratione porro nostrum fugit adipisci totam ex beatae magni, eaque et, harum vitae optio fugiat qui.
+                    Reprehenderit nulla ullam delectus, sint veritatis architecto pariatur exercitationem quasi?</p>
+                <a class="white-shadow" href="#">More information</a>
+                    
+            </section>
+            <section class="column">
+                <img src="media/globe.svg">
+                <!-- Image downloaded from https://commons.wikimedia.org/wiki/File:Globe.svg -->
+                <h3>Geolocation</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet iure ipsam consectetur quo
+                    repellendus explicabo cumque, amet rem ut fuga! Natus repellat at saepe autem reiciendis ab
+                    perspiciatis fuga quae vero enim deserunt, consequatur eveniet, sit minima cumque placeat itaque?</p>
+            </section>
+            <section class="column">
+                <img src="media/filmstrip.svg">
+                <!-- Image downloaded from http://thecraftchop.com/tags/entries/movie-frame -->
+                <h3>Media</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur soluta harum dignissimos.
+                    Blanditiis commodi est possimus, optio earum distinctio ea itaque reprehenderit et neque odio eos
+                    tempora fuga numquam, qui repellat placeat autem expedita at, iste similique ducimus! Commodi, id.</p>
+            </section>
+
+
+
+        </article>
+        <article class="container">
+            <section class="column">
+                <img src="media/css3.svg">
+                <h3>CSS3</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas inventore veniam nobis vitae enim vel
+                    quisquam accusamus dolores aut deserunt repudiandae suscipit labore rerum id, omnis earum eius
+                    consequatur itaque cumque cum odit ea illo. Mollitia cupiditate facere recusandae pariatur?</p>
+            </section>
+            <section class="column">
+                <img src="media/js.svg">
+                <h3>JavaScript</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quo dolor officiis incidunt
+                    aliquam delectus officia dicta aut ipsum a, sint quis quia dolore. Illum pariatur iusto nihil
+                    architecto rem. A voluptatem nesciunt sint porro exercitationem aut laboriosam voluptates ullam?</p>
+            </section>
+
+            <section class="column"></section>
+        </article>
+    </main>
+
     
-      <footer>
-        <p>Acme Web Design, Copyright &#169; 2017</p>
-      </footer>
+
+
 
     <p id='demo'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi omnis nisi maxime eveniet quos
         error,
@@ -111,6 +141,10 @@
     </p>
 
     <p id='location'>Location Data</p>
+
+    <footer>
+        <p id="footerText"></p>
+    </footer>
 
     <script src="js/site.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

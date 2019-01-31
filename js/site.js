@@ -60,6 +60,8 @@
 window.onload = RunScripts();
 
 function RunScripts(){
+    updateFooter();
+    startWorker();
     getText();
 }
 
@@ -147,5 +149,38 @@ function showError(error) {
             userLocation.innerHTML = "An unknown error occurred."
             break;
     }
+}
+
+function updateFooter(){
+    var currentDate = new Date();
+    
+    document.getElementById("footerText").innerHTML = `Design & Coding by Arek, Copyright &#169; ${currentDate.getFullYear()}`
+}
+
+var w;
+
+function startWorker() {
+    var resultDisplay = document.getElementById("result");
+
+    try {
+        if(typeof(Worker) !== "undefined") {
+            if(typeof(w) == "undefined") {
+              w = new Worker("js/time.js");
+            }
+            w.onmessage = function(event) {
+                resultDisplay.innerHTML = event.data;
+            };
+          } else {
+            resultDisplay.innerHTML = "Sorry, your browser does not support Web Workers...";
+        }
+    } catch (error) {
+        resultDisplay.innerHTML = error;
+    }
+
+}
+
+function stopWorker() { 
+  w.terminate();
+  w = undefined;
 }
 
