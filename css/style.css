@@ -13,7 +13,6 @@ html, body{
 }
 
 main{
-    width: 80vw;
     margin: auto;
 }
 
@@ -370,9 +369,9 @@ footer p{
     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1080px) {
     main{
-        width: 64vw;
+        width: 66vw;
         margin: auto;
     }
 }
