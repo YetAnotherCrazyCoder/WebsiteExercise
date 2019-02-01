@@ -62,10 +62,18 @@ window.onload = RunScripts();
 function RunScripts(){
     updateFooter();
     startWorker();
-    getText();
+    getHtmlText();
 }
 
 //Part 1.2 Use JS for DOM manipulation
+//Function updates the footer text so the copyright year is a current year
+function updateFooter(){
+    var currentDate = new Date();
+    document.getElementById("footerText").innerHTML = `Design & Coding by Arek, Copyright &#169; ${currentDate.getFullYear()}`
+}
+
+//Part 1.2 Use JS for DOM manipulation
+//Function is changing classes applied to nav bar and hamburger button on a nav bar
 function switchNavbar() {
     var navbar = document.getElementById("navBar");
     var navbtn = document.getElementById("navbtn");
@@ -84,16 +92,23 @@ function switchNavbar() {
 }
 
 //Part 1.4 Use XMLHttpRequest objects to comunicate data
-function getText() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("demo").innerHTML =
-                this.responseText;
+//Function is using XMLHttpRequest to retrive file content and to display it
+function getHtmlText() {
+    var textPlaceholder = document.getElementById("htmlText");
+    if (textPlaceholder) {
+        try {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    textPlaceholder.innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "txt/html.txt", true);
+            xhttp.send();
+        } catch (error) {
+            textPlaceholder.innerHTML = error;
         }
-    };
-    xhttp.open("GET", "txt/html.txt", true);
-    xhttp.send();
+    }
 }
 
 //Part 1.6.2 Collect user location data
@@ -151,11 +166,7 @@ function showError(error) {
     }
 }
 
-function updateFooter(){
-    var currentDate = new Date();
-    
-    document.getElementById("footerText").innerHTML = `Design & Coding by Arek, Copyright &#169; ${currentDate.getFullYear()}`
-}
+
 
 var w;
 

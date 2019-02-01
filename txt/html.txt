@@ -1,8 +1,10 @@
-    <p>
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <p>
         <b>HTML5</b> is the latest evolution of the standard that defines HTML. The term represents two different
         concepts. It is a new version of the language HTML, with new elements, attributes, and behaviors, and a larger
         set of technologies that allows the building of more diverse and powerful Web sites and applications. This set
-        is sometimes called HTML5 & friends and often shortened to just HTML5.
+        is sometimes called HTML5 &amp; friends and often shortened to just HTML5.
     </p>
     <p>
         Designed to be usable by all Open Web developers, this reference page links to numerous resources about HTML5
@@ -21,3 +23,4 @@
         <li><b>Device access:</b> allowing for the usage of various input and output devices.</li>
         <li><b>Styling:</b> letting authors write more sophisticated themes.</li>
     </ul>
+</root>    

@@ -1,46 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-            crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css">
-        <link rel="stylesheet" href="css/style.css">
-        <title>HTML CSS3 JS</title>
-    </head>
 
-    <body>
-        <nav class="topnav" id="navBar">
-            <output id="result"></output>
-            <a href="index.html"><i class="fas fa-home"></i>&nbsp;Home</a>
-            <a class="active" href="html.html"><i class="fab fa-html5"></i>&nbsp;HTM5</a>
-            <a href="media.html"><i class="fas fa-video"></i>&nbsp;Media</a>
-            <a href="geolocation.html"><i class="far fa-map"></i>&nbsp;Geolocation</a>
-            <a href="css.html"><i class="fab fa-css3"></i>CSS3</a>
-            <a href="js.html"><i class="fab fa-js"></i>&nbsp;JavaScript</a>
-            <a href="#"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a>
-            <a href="javascript:void(0);" class="icon" onclick="switchNavbar()"><i id="navbtn" class="fa fa-bars"></i></a>
-        </nav>
-        <main>
-            <article>
-                <h1>HTML5</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>HTML CSS3 JS</title>
+</head>
+
+<body>
+    <nav class="topnav" id="navBar">
+        <output id="result"></output>
+        <a href="index.html"><i class="fas fa-home"></i></a>
+        <a class="active" href="html.html"><i class="fab fa-html5"></i>&nbsp;HTM5</a>
+        <a href="media.html"><i class="fas fa-video"></i>&nbsp;Media</a>
+        <a href="geolocation.html"><i class="far fa-map"></i>&nbsp;Geolocation</a>
+        <a href="css.html"><i class="fab fa-css3"></i>CSS3</a>
+        <a href="js.html"><i class="fab fa-js"></i>&nbsp;JavaScript</a>
+        <a href="#"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a>
+        <a href="javascript:void(0);" class="icon" onclick="switchNavbar()"><i id="navbtn" class="fa fa-bars"></i></a>
+    </nav>
+    <main>
+        <article>
+            <h1>HTML</h1>
+            <p><strong>HTML</strong> (HyperText Markup Language) is the most
+                    basic building block of the Web. It defines the meaning and structure of web content. Other
+                    technologies besides HTML are generally used to describe a web page's appearance/presentation (CSS) or functionality/behavior (JavaScript).</p>
+
+            <p>"HyperText" refers to links that connect web pages to one another, either within a single website or
+                between websites. Links are a fundamental aspect of the Web. By uploading content to the Internet and
+                linking it to pages created by other people, you become an active participant in the World Wide Web.</p>
+
+            <p>HTML uses "markup" to annotate text, images, and other content for display in a Web browser. HTML markup
+                <code>&lt;head&gt;</code>,
+                <code>&lt;title&gt;</code></a>,
+                <code>&lt;body&gt;</code></a>,
+                <code>&lt;header&gt;</code></a>,
+                <code>&lt;footer&gt;</code></a>,
+                <code>&lt;article&gt;</code></a>,
+                <code>&lt;section&gt;</code></a>,
+                <code>&lt;p&gt;</code></a>,
+                <code>&lt;div&gt;</code></a>,
+                <code>&lt;span&gt;</code></a>,
+                <code>&lt;img&gt;</code></a>,
+                <code>&lt;aside&gt;</code></a>,
+                <code>&lt;audio&gt;</code></a>,
+                <code>&lt;canvas&gt;</code></a>,
+                <code>&lt;datalist&gt;</code></a>,
+                <code>&lt;details&gt;</code></a>,
+                <code>&lt;embed&gt;</code></a>,
+                <code>&lt;nav&gt;</code></a>,
+                <code>&lt;output&gt;</code></a>,
+                <code>&lt;progress&gt;</code></a>,
+                <code>&lt;video&gt;</code></a>
+                and many others.</p>
+
+            <p>An HTML element is set off from other text in a document by "tags", which consist of the element name
+                surrounded by "&lt;" and "&gt;". The name of an element inside a tag is case insensitive. That is, it
+                can be written in uppercase, lowercase, or a mixture. For example, the <code>&lt;title&gt;</code><strong>
+                </strong>tag can be written as <code>&lt;Title&gt;</code>,<code>&lt;TITLE&gt;</code>, or in any other way.</p>
+            
+            <section>
+                <h3>HTML5</h3>
+                <p id="htmlText">This paragraph should be updated thanks to XMLHTTPRequest.</p>
+            </section>
+            <section>
+                <h3>Sample of our HTML code:</h3>
                 <pre>
-                    <code class="language-html">
+                                <code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zxx"&gt;
 
-                    </code>
-                </pre>
-            </article>
-        </main>
-        <footer>
-            <p id="footerText"></p>
-        </footer>
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+    &lt;link rel="stylesheet" href="css/normalize.css"&gt;
+    &lt;link rel="stylesheet" 
+        href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity=
+        "sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous"&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+    &lt;title&gt;HTML CSS3 JS&lt;/title&gt;
+&lt;/head&gt;
 
-        <script src="js/site.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
-    </body>
+&lt;body&gt;
+    &lt;header class="intro"&gt;
+        &lt;div class="inner"&gt;
+            &lt;div class="content"&gt;
+                &lt;section class="animated"&gt;
+                    &lt;h1&gt;HTML5 CSS3 JavaScript&lt;/h1&gt;
+                    &lt;a class="btn" href="#"&gt;Get Started&lt;/a&gt;
+                &lt;/section&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;nav class="topnav" id="navBar"&gt;
+        &lt;output id="result"&gt;&lt;/output&gt;
+        &lt;a class="active" href="index.html"&gt;
+            &lt;i class="fas fa-home"&gt;&lt;/i&gt;&lt;/a&gt;
+        &lt;a href="html.html"&gt;
+            &lt;i class="fab fa-html5"&gt;&lt;/i&gt;&nbsp;HTM5&lt;/a&gt;
+        &lt;a href="media.html"&gt;
+            &lt;i class="fas fa-video"&gt;&lt;/i&gt;&nbsp;Media&lt;/a&gt;
+        &lt;a href="geolocation.html"&gt;
+            &lt;i class="far fa-map"&gt;&lt;/i&gt;&nbsp;Location&lt;/a&gt;
+        &lt;a href="css.html"&gt;
+            &lt;i class="fab fa-css3"&gt;&lt;/i&gt;CSS3&lt;/a&gt;
+        &lt;a href="js.html"&gt;
+            &lt;i class="fab fa-js"&gt;&lt;/i&gt;&nbsp;JavaScript&lt;/a&gt;
+        &lt;a href="#"&gt;
+            &lt;i class="fas fa-sign-in-alt"&gt;&lt;/i&gt;&nbsp;Login&lt;/a&gt;
+        &lt;a href="javascript:void(0);" class="icon" onclick="switchNavbar()"&gt;
+            &lt;i id="navbtn" class="fa fa-bars"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;main class="columns"&gt;
+        &lt;article class="container"&gt;
+            &lt;section class="column"&gt;
+                &lt;img src="media/html.svg"&gt;
+                &lt;h3&gt;HTML5&lt;/h3&gt;
+                &lt;p&gt;Lorem ipsum, dolor sit amet consectetur ...&lt;/p&gt;
+                &lt;div class="more"&gt;
+                    &lt;a class="white-shadow" href="html.html"&gt;More information&lt;/a&gt;
+                &lt;/div&gt;
+                    
+            &lt;/section&gt;
+            &lt;section class="column"&gt;
+                &lt;img src="media/globe.svg"&gt;
+                &lt;h3&gt;Geolocation&lt;/h3&gt;
+                &lt;p&gt;Lorem ipsum, dolor sit amet consectetur ...&lt;/p&gt;
+            &lt;/section&gt;
+            &lt;section class="column"&gt;
+                &lt;img src="media/filmstrip.svg"&gt;
+                &lt;h3&gt;Media&lt;/h3&gt;
+                &lt;p&gt;Lorem ipsum, dolor sit amet consectetur ...&lt;/p&gt;
+            &lt;/section&gt;
+
+        &lt;/article&gt;
+        &lt;article class="container"&gt;
+            &lt;section class="column"&gt;
+                &lt;img src="media/css3.svg"&gt;
+                &lt;h3&gt;CSS3&lt;/h3&gt;
+                &lt;p&gt;Lorem ipsum, dolor sit amet consectetur ...&lt;/p&gt;
+            &lt;/section&gt;
+            &lt;section class="column"&gt;
+                &lt;img src="media/js.svg"&gt;
+                &lt;h3&gt;JavaScript&lt;/h3&gt;
+                &lt;p&gt;Lorem ipsum, dolor sit amet consectetur ...&lt;/p&gt;
+            &lt;/section&gt;
+
+            &lt;section class="column"&gt;&lt;/section&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p id="footerText"&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+
+    &lt;script src="js/site.js"&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+                                </code>
+                        </pre>
+            </section>
+
+        </article>
+    </main>
+    <footer>
+        <p id="footerText"></p>
+    </footer>
+
+    <script src="js/site.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+</body>
+
 </html>
