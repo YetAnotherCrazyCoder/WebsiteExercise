@@ -102,6 +102,10 @@ function getHtmlText() {
                 if (this.readyState == 4 && this.status == 200) {
                     textPlaceholder.innerHTML = this.responseText;
                 }
+                else {
+                    textPlaceholder.className = "error";
+                    textPlaceholder.innerHTML = "Access to XMLHttpRequest from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https";
+                }
             };
             xhttp.open("GET", "txt/html.txt", true);
             xhttp.send();

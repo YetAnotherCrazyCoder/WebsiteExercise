@@ -266,6 +266,12 @@ footer p{
     margin-block-start: 0px;
     margin-block-end: 0px;
 }
+
+.error{
+    color: rgb(163, 14, 14);
+    font-weight: bold;
+    font-size: 2em;
+}
   
 @media screen and (max-width: 800px) {
     body{
