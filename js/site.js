@@ -146,7 +146,7 @@ function showPosition(position) {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 obj = JSON.parse(this.responseText);
-
+                console.log(obj);
                 city = obj.name;
                 temperature = obj.main.temp;
                 pressure = obj.main.pressure;
@@ -155,7 +155,7 @@ function showPosition(position) {
                 windDir = obj.wind.deg;
                 description = obj.weather[0].main;
                 userLocationText.innerHTML += 
-                `</br>${city} ${temperature} &#8451; ${description}
+                `</br>${city} ${temperature}&#8451; ${description}
                 </br> Pressure: ${pressure} hpa
                 </br> Humidity: ${humidity} &#37;
                 </br> Wind: ${windSpd} m/s ${windDir}&deg;`;
