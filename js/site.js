@@ -56,10 +56,16 @@
 // document.URL	Returns the complete URL of the document	1
 
 
+
+var errorTitle;
+var errorText;
+
 //Part 1.2 Use JS for handling events
 window.onload = RunScripts();
 
-function RunScripts(){
+function RunScripts() {
+    errorTitle = document.getElementById("errorTitle");
+    errorText = document.getElementById("errorText");
     updateFooter();
     startWorker();
     getHtmlText();
@@ -67,7 +73,7 @@ function RunScripts(){
 
 //Part 1.2 Use JS for DOM manipulation
 //Function updates the footer text so the copyright year is a current year
-function updateFooter(){
+function updateFooter() {
     var currentDate = new Date();
     document.getElementById("footerText").innerHTML = `Design & Coding by Arek, Copyright &#169; ${currentDate.getFullYear()}`
 }
@@ -101,10 +107,11 @@ function getHtmlText() {
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     textPlaceholder.innerHTML = this.responseText;
+                    textPlaceholder.className = "";
                 }
                 else {
                     textPlaceholder.className = "error";
-                    textPlaceholder.innerHTML = "Access to XMLHttpRequest from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https";
+                    textPlaceholder.innerHTML = "XMLHttpRequest error. Please try using Firefox browser";
                 }
             };
             xhttp.open("GET", "txt/html.txt", true);
@@ -116,86 +123,88 @@ function getHtmlText() {
 }
 
 //Part 1.6.2 Collect user location data
-var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-};
-
-var userLocation;
+var userLocationText;
 
 function getLocation() {
-    userLocation = document.getElementById('location');
-    if(userLocation){
-        console.log(location.innerHTML);
-        userLocation.scrollIntoView();
+    userLocationText = document.getElementById('location');
+    if (userLocationText) {
+        userLocationText.scrollIntoView();
     }
-    console.log("running location script");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
-        userLocation.innerHTML = "Geolocation is not supported by this browser.";
+        errorTitle.innerHTML = "Error occured";
+        errorText.className = "error";
+        errorText.innerHTML += "<li>Geolocation is not supported by this browser.</li>";
     }
 }
 
 function showPosition(position) {
-    console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
-    
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            userLocation.innerHTML = "Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude + "<br>Weather :" + this.responseText;
-                
-        }
-    };
-    xhttp.open("GET", `https://webpage-exercise-arek.netlify.com/.netlify/functions/weather?lon=${position.coords.longitude}&lat=${position.coords.latitude}`, true);
-    xhttp.send();
+    userLocationText.innerHTML = "Your position is:<br>Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+
+    try {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                userLocationText.innerHTML += this.responseText;
+            }
+        };
+        xhttp.open("GET", `.netlify/functions/weather?lon=${position.coords.longitude}&lat=${position.coords.latitude}`, true);
+        xhttp.send();
+    } catch (error) {
+        errorTitle.innerHTML = "Error occured";
+        errorText.className = "error";
+        errorText.innerHTML += "<li>" + error + "</li>";
+    }
 }
 
 function showError(error) {
+    errorTitle.innerHTML = "Error occured";
+    errorText.className = "error";
+
     switch (error.code) {
         case error.PERMISSION_DENIED:
-            userLocation.innerHTML = "You denied the request for Geolocation."
+            errorText.innerHTML += "<li>You denied the request for Geolocation." + "<br>";
             break;
         case error.POSITION_UNAVAILABLE:
-            userLocation.innerHTML = "Location information is unavailable."
+            errorText.innerHTML += "<li>Location information is unavailable." + "<br>";
             break;
         case error.TIMEOUT:
-            userLocation.innerHTML = "The request to get your location timed out."
+            errorText.innerHTML += "<li>The request to get your location timed out." + "<br>";
             break;
         case error.UNKNOWN_ERROR:
-            userLocation.innerHTML = "An unknown error occurred."
+            errorText.innerHTML += "<li>An unknown error occurred." + "<br>";
             break;
     }
 }
 
-
-
-var w;
+var webWorker;
 
 function startWorker() {
     var resultDisplay = document.getElementById("result");
 
     try {
-        if(typeof(Worker) !== "undefined") {
-            if(typeof(w) == "undefined") {
-              w = new Worker("js/time.js");
+        if (typeof (Worker) !== "undefined") {
+            if (typeof (webWorker) == "undefined") {
+                webWorker = new Worker("js/time.js");
             }
-            w.onmessage = function(event) {
+            webWorker.onmessage = function (event) {
                 resultDisplay.innerHTML = event.data;
             };
-          } else {
-            resultDisplay.innerHTML = "Sorry, your browser does not support Web Workers...";
+        } else {
+            errorTitle.innerHTML = "Error occured";
+            errorText.className = "error";
+            errorText.innerHTML += "<li>Sorry, your browser does not support Web Workers...</li>";
         }
     } catch (error) {
-        resultDisplay.innerHTML = "";
+        errorTitle.innerHTML = "Error occured";
+        errorText.className = "error";
+        errorText.innerHTML += "<li>" + error + "<br>Please try using Firefox browser</li>";
     }
-
 }
 
-function stopWorker() { 
-  w.terminate();
-  w = undefined;
+function stopWorker() {
+    webWorker.terminate();
+    webWorker = undefined;
 }
 

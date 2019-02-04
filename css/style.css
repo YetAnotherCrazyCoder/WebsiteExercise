@@ -270,7 +270,8 @@ footer p{
 .error{
     color: rgb(163, 14, 14);
     font-weight: bold;
-    font-size: 2em;
+    text-align: left;
+    word-wrap: break-word;
 }
   
 @media screen and (max-width: 800px) {
