@@ -56,7 +56,6 @@
 // document.URL	Returns the complete URL of the document	1
 
 
-
 var errorTitle;
 var errorText;
 
@@ -156,10 +155,10 @@ function showPosition(position) {
                 windDir = obj.wind.deg;
                 description = obj.weather[0].main;
                 userLocationText.innerHTML += 
-                `${city} ${temperature} &#8451; ${description}
-                </br> Pressure: ${pressure}
-                </br> Humidity: ${humidity}
-                </br> Wind: ${windSpd}m/s direction: ${windDir}&deg;`;
+                `</br>${city} ${temperature} &#8451; ${description}
+                </br> Pressure: ${pressure} hpa
+                </br> Humidity: ${humidity} &#37;
+                </br> Wind: ${windSpd} m/s ${windDir}&deg;`;
             }
         };
         xhttp.open("GET", `.netlify/functions/weather?lon=${position.coords.longitude}&lat=${position.coords.latitude}`, true);
