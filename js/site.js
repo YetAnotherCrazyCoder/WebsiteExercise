@@ -146,7 +146,20 @@ function showPosition(position) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                userLocationText.innerHTML += this.responseText;
+                obj = JSON.parse(this.responseText);
+
+                city = obj.name;
+                temperature = obj.main.temp;
+                pressure = obj.main.pressure;
+                humidity = obj.main.humidity;
+                windSpd = obj.wind.speed;
+                windDir = obj.wind.deg;
+                description = obj.weather[0].main;
+                userLocationText.innerHTML += 
+                `${city} ${temperature} &#8451; ${description}
+                </br> Pressure: ${pressure}
+                </br> Humidity: ${humidity}
+                </br> Wind: ${windSpd}m/s direction: ${windDir}&deg;`;
             }
         };
         xhttp.open("GET", `.netlify/functions/weather?lon=${position.coords.longitude}&lat=${position.coords.latitude}`, true);
