@@ -220,3 +220,20 @@ function stopWorker() {
     webWorker = undefined;
 }
 
+function Register(){
+    var fname = document.getElementById('fname').value;
+    var lname = document.getElementById('lname').value;
+    var email = document.getElementById('email').value;
+    
+    var password = document.getElementById('password').value;
+    var rpassword = document.getElementById('rpassword').value;
+
+    console.log(password + " " + rpassword);
+    
+    if(password === rpassword){
+        window.alert("This would process registration on backend");
+    } else {
+        window.alert("Password and Repeat Password does not match");    
+    }
+}
+
