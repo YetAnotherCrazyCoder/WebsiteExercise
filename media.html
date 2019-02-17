@@ -18,17 +18,17 @@
         <output id="result"></output>
         <a href="index.html"><i class="fas fa-home"></i></a>
         <a href="html.html"><i class="fab fa-html5"></i>&nbsp;HTM5</a>
-        <a class="active" href="media.html"><i class="fas fa-video"></i>&nbsp;Media</a>
-        <a href="geolocation.html"><i class="far fa-map"></i>&nbsp;Geolocation</a>
-        <a href="css.html"><i class="fab fa-css3"></i>CSS3</a>
         <a href="js.html"><i class="fab fa-js"></i>&nbsp;JavaScript</a>
+        <a href="css.html"><i class="fab fa-css3"></i>CSS3</a>
+        <a class="active" href="media.html"><i class="fas fa-video"></i>&nbsp;Media</a>
+        <a href="geolocation.html"><i class="far fa-map"></i>&nbsp;Location</a>
         <a href="register.html"><i class="fas fa-sign-in-alt"></i>&nbsp;Register</a>
         <a href="javascript:void(0);" class="icon" onclick="switchNavbar()"><i id="navbtn" class="fa fa-bars"></i></a>
     </nav>
     <main>
         <article>
             <h1>HTML5 Media</h1>
-            <section>
+            <section class="center">
                 <h3>Video</h3>
                 <p>The HTML Video element (&lt;video&gt;) embeds a media player which supports video playback into the
                     document.</p>
@@ -40,7 +40,7 @@
             </section>
             <section>
                 <h3>Code</h3>
-                <p>HTML5 Code required to display the video</p>
+                <p>HTML5 Code required to embed video:</p>
                 <pre>
                     <code class="language-html">
     &lt;video width="620" controls poster="media/tl.png"&gt;
@@ -51,7 +51,7 @@
                     </code>
                 </pre>
             </section>
-            <section>
+            <section class="center">
                 <h3>Audio</h3>
                 <p>The HTML &lt;audio&gt; element is used to embed sound content in documents. It may contain one or
                     more
@@ -60,7 +60,8 @@
                     destination
                     for streamed media, using a MediaStream.</p>
                 <figure>
-                    <figcaption>Music downloaded from <a href="https://www.bensound.com">https://www.bensound.com</a> under Creative Commons License</figcaption>
+                    <figcaption>Music downloaded from <a href="https://www.bensound.com">https://www.bensound.com</a>
+                        under Creative Commons License</figcaption>
                     <audio controls src="media/bensound-energy.mp3">
                         Your browser does not support the
                         <code>audio</code> element.
@@ -69,16 +70,13 @@
             </section>
             <section>
                 <h3>Code</h3>
-                <p>HTML5 Code required to display the video</p>
+                <p>HTML5 Code required to embed audio:</p>
                 <pre>
                     <code class="language-html">
-    &lt;figure&gt;
-        &lt;figcaption&gt;Music downloaded from &lt;a href="https://www.bensound.com"&gt;https://www.bensound.com&lt;/a&gt; under Creative Commons License&lt;/figcaption&gt;
-        &lt;audio controls src="media/bensound-energy.mp3"&gt;
-            Your browser does not support the
-            &lt;code&gt;audio&lt;/code&gt; element.
-        &lt;/audio&gt;
-    &lt;/figure&gt;
+    &lt;audio controls src="media/bensound-energy.mp3"&gt;
+        Your browser does not support the
+        &lt;code&gt;audio&lt;/code&gt; element.
+    &lt;/audio&gt;
                     </code>
                 </pre>
             </section>
@@ -88,11 +86,11 @@
         <p id="footerText"></p>
     </footer>
 
-    <script src="js/site.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+    <script src="js/site.js"></script>
 </body>
 
 </html>

@@ -66,7 +66,7 @@ function RunScripts() {
     errorTitle = document.getElementById("errorTitle");
     errorText = document.getElementById("errorText");
     updateFooter();
-    startWorker();
+    //startWorker();
     getHtmlText();
 }
 
@@ -109,8 +109,9 @@ function getHtmlText() {
                     textPlaceholder.className = "";
                 }
                 else {
-                    textPlaceholder.className = "error";
-                    textPlaceholder.innerHTML = "XMLHttpRequest error. Please try using Firefox browser";
+                    errorTitle.innerHTML = "Error occured";
+                    errorText.className = "error";
+                    errorText.innerHTML += "<li>XMLHttpRequest error. Please try using Firefox browser</li>";
                 }
             };
             xhttp.open("GET", "txt/html.txt", true);
@@ -123,9 +124,11 @@ function getHtmlText() {
 
 //Part 1.6.2 Collect user location data
 var userLocationText;
+var googleMap;
 
 function getLocation() {
     userLocationText = document.getElementById('location');
+    googleMap = document.getElementById("goolemap");
     if (userLocationText) {
         userLocationText.scrollIntoView();
     }
@@ -138,35 +141,35 @@ function getLocation() {
     }
 }
 
-function showPosition(position) {
-    userLocationText.innerHTML = "Your position is:<br>Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+function toDegreesMinutesAndSeconds(coordinate) {
+    var absolute = Math.abs(coordinate);
+    var degrees = Math.floor(absolute);
+    var minutesNotTruncated = (absolute - degrees) * 60;
+    var minutes = Math.floor(minutesNotTruncated);
+    var seconds = Math.floor((minutesNotTruncated - minutes) * 60);
+    return degrees + "&deg;" + minutes + "&prime;" + seconds + "&Prime; ";
+}
 
+function convertDMS(position) {
+    var latitude = toDegreesMinutesAndSeconds(position.coords.latitude);
+    var latitudeCardinal = Math.sign(position.coords.latitude) >= 0 ? "N" : "S";
+
+    var longitude = toDegreesMinutesAndSeconds(position.coords.longitude);
+    var longitudeCardinal = Math.sign(position.coords.longitude) >= 0 ? "E" : "W";
+
+    return latitude + latitudeCardinal + " &ensp;" + longitude + longitudeCardinal;
+}
+
+function showPosition(position) {
+    userLocationText.innerHTML = "Your position is: " + convertDMS(position);
     try {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                obj = JSON.parse(this.responseText);
-                console.log(obj);
-                city = obj.name;
-                temperature = obj.main.temp;
-                pressure = obj.main.pressure;
-                humidity = obj.main.humidity;
-                windSpd = obj.wind.speed;
-                windDir = obj.wind.deg;
-                description = obj.weather[0].main;
-                userLocationText.innerHTML += 
-                `</br>${city} ${temperature}&#8451; ${description}
-                </br> Pressure: ${pressure} hpa
-                </br> Humidity: ${humidity} &#37;
-                </br> Wind: ${windSpd} m/s ${windDir}&deg;`;
-            }
-        };
-        xhttp.open("GET", `.netlify/functions/weather?lon=${position.coords.longitude}&lat=${position.coords.latitude}`, true);
-        xhttp.send();
+        var googleMapURL = "https://www.google.com/maps/embed/v1/place?q=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyA-5px9IvD9XjxTBh5EpJwYRp4XC7zaMTg";
+        googleMap.src = googleMapURL;
     } catch (error) {
         errorTitle.innerHTML = "Error occured";
         errorText.className = "error";
         errorText.innerHTML += "<li>" + error + "</li>";
+        
     }
 }
 
@@ -176,16 +179,16 @@ function showError(error) {
 
     switch (error.code) {
         case error.PERMISSION_DENIED:
-            errorText.innerHTML += "<li>You denied the request for Geolocation." + "<br>";
+            errorText.innerHTML += "<li>You denied the request for Geolocation." + "</li>";
             break;
         case error.POSITION_UNAVAILABLE:
-            errorText.innerHTML += "<li>Location information is unavailable." + "<br>";
+            errorText.innerHTML += "<li>Location information is unavailable." + "</li>";
             break;
         case error.TIMEOUT:
-            errorText.innerHTML += "<li>The request to get your location timed out." + "<br>";
+            errorText.innerHTML += "<li>The request to get your location timed out." + "</li>";
             break;
         case error.UNKNOWN_ERROR:
-            errorText.innerHTML += "<li>An unknown error occurred." + "<br>";
+            errorText.innerHTML += "<li>An unknown error occurred." + "</li>";
             break;
     }
 }
@@ -236,4 +239,3 @@ function Register(){
         window.alert("Password and Repeat Password does not match");    
     }
 }
-

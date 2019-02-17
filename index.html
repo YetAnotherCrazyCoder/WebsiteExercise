@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>HTML CSS3 JS</title>
 </head>
@@ -18,7 +19,7 @@
             <div class="content">
                 <section class="animated">
                     <h1>HTML5 CSS3 JavaScript</h1>
-                    <a class="btn" href="#">Get Started</a>
+                    <a class="btn" href="#navBar">Get Started</a>
                 </section>
             </div>
         </div>
@@ -28,10 +29,10 @@
         <output id="result"></output>
         <a class="active" href="index.html"><i class="fas fa-home"></i></a>
         <a href="html.html"><i class="fab fa-html5"></i>&nbsp;HTM5</a>
-        <a href="media.html"><i class="fas fa-video"></i>&nbsp;Media</a>
-        <a onclick="getLocation(); return false;" href="geolocation.html"><i class="far fa-map"></i>&nbsp;Location</a>
-        <a href="css.html"><i class="fab fa-css3"></i>CSS3</a>
         <a href="js.html"><i class="fab fa-js"></i>&nbsp;JavaScript</a>
+        <a href="css.html"><i class="fab fa-css3"></i>CSS3</a>
+        <a href="media.html"><i class="fas fa-video"></i>&nbsp;Media</a>
+        <a href="geolocation.html"><i class="far fa-map"></i>&nbsp;Location</a>
         <a href="register.html"><i class="fas fa-sign-in-alt"></i>&nbsp;Register</a>
         <a href="javascript:void(0);" class="icon" onclick="switchNavbar()"><i id="navbtn" class="fa fa-bars"></i></a>
     </nav>
@@ -45,38 +46,23 @@
             <section class="column">
                 <img src="media/html.svg">
                 <h3>HTML5</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates earum blanditiis, quae quia at
-                    ratione porro nostrum fugit adipisci totam ex beatae magni, eaque et, harum vitae optio fugiat qui.
-                    Reprehenderit nulla ullam delectus, sint veritatis architecto pariatur exercitationem quasi?</p>
+                <p>HTML5 is the latest evolution of the standard that defines HTML. The term represents two different
+                    concepts. It is a new version of the language HTML, with new elements, attributes, and behaviors,
+                    and a larger set of technologies that allows the building of more diverse and powerful Web sites and
+                    ... </p>
                 <div class="more">
-                    <a class="white-shadow" href="html.html">More information</a>
+                    <a class="white-shadow" href="html.html">Continue reading...</a>
                 </div>
-
             </section>
-            <section class="column">
-                <img src="media/globe.svg">
-                <!-- Image downloaded from https://commons.wikimedia.org/wiki/File:Globe.svg -->
-                <h3>Geolocation</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet iure ipsam consectetur quo
-                    repellendus explicabo cumque, amet rem ut fuga! Natus repellat at saepe autem reiciendis ab
-                    perspiciatis fuga quae vero enim deserunt, consequatur eveniet, sit minima cumque placeat itaque?</p>
-            </section>
-            <section class="column">
-                <img src="media/filmstrip.svg">
-                <!-- Image downloaded from http://thecraftchop.com/tags/entries/movie-frame -->
-                <h3>Media</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur soluta harum dignissimos.
-                    Blanditiis commodi est possimus, optio earum distinctio ea itaque reprehenderit et neque odio eos
-                    tempora fuga numquam, qui repellat placeat autem expedita at, iste similique ducimus! Commodi, id.</p>
-            </section>
-        </article>
-        <article class="container">
             <section class="column">
                 <img src="media/css3.svg">
                 <h3>CSS3</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas inventore veniam nobis vitae enim vel
                     quisquam accusamus dolores aut deserunt repudiandae suscipit labore rerum id, omnis earum eius
                     consequatur itaque cumque cum odit ea illo. Mollitia cupiditate facere recusandae pariatur?</p>
+                <div class="more">
+                    <a class="white-shadow" href="css.html">Continue reading...</a>
+                </div>
             </section>
             <section class="column">
                 <img src="media/js.svg">
@@ -84,13 +70,44 @@
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quo dolor officiis incidunt
                     aliquam delectus officia dicta aut ipsum a, sint quis quia dolore. Illum pariatur iusto nihil
                     architecto rem. A voluptatem nesciunt sint porro exercitationem aut laboriosam voluptates ullam?</p>
+                <div class="more">
+                    <a class="white-shadow" href="js.html">Continue reading...</a>
+                </div>
             </section>
+
+        </article>
+        <article class="container">
+            <section class="column">
+                <img src="media/map-marked-alt-solid.svg">
+                <!-- Image downloaded from https://fontawesome.com/icons/map-marked-alt?style=solid under Ceative Commons Attribution 4.0 License as per https://fontawesome.com/license-->
+                <h3>Geolocation</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet iure ipsam consectetur quo
+                    repellendus explicabo cumque, amet rem ut fuga! Natus repellat at saepe autem reiciendis ab
+                    perspiciatis fuga quae vero enim deserunt, consequatur eveniet, sit minima cumque placeat itaque?
+                </p>
+                <div class="more">
+                    <a class="white-shadow" href="geolocation.html">Continue reading...</a>
+                </div>
+            </section>
+            <section class="column">
+                <img src="media/compact-disc-solid.svg">
+                <!-- Image downloaded from https://fontawesome.com/icons/compact-disc?style=solid under Ceative Commons Attribution 4.0 License as per https://fontawesome.com/license-->
+                <h3>Media</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur soluta harum dignissimos.
+                    Blanditiis commodi est possimus, optio earum distinctio ea itaque reprehenderit et neque odio eos
+                    tempora fuga numquam, qui repellat placeat autem expedita at, iste similique ducimus! Commodi, id.
+                </p>
+                <div class="more">
+                    <a class="white-shadow" href="media.html">Continue reading...</a>
+                </div>
+            </section>
+
 
             <section class="column"></section>
         </article>
     </main>
 
-    <p id='location'>Location Data</p>
+    
 
     <footer>
         <p id="footerText"></p>
