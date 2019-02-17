@@ -32,6 +32,7 @@ html, body{
 .dark input[type=text], .dark input[type=email], .dark input[type=password], .dark select, .dark textarea {
     border: 1px solid #555;
     background-color: #222;
+    color: white;
 }
 
 .dark p code{
