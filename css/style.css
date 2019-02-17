@@ -409,6 +409,38 @@ iframe{
     border-style: hidden;
 }
 
+.canvasHolder {
+    height: 300px;
+    
+    margin: auto;
+    display: block;
+    overflow: hidden;
+  }
+
+.canvasHolder #canvas {
+    opacity: .8;
+
+    cursor: crosshair;
+    background-color: antiquewhite;
+}
+
+.info {
+    font-family: 'Georgia', cursive;
+    font-size: 20px;
+    position: relative;
+    top: -70%;
+    color: #444;
+    display: block;
+    background-color: wheat;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+}
+
+video{
+    width: 96%;
+}
+
 
 
   
@@ -456,6 +488,8 @@ iframe{
     }
 
     nav output {
+        width: 200px;
+        font-size: .8em;
         position: absolute;
         right: 46px;
         top: 0;
