@@ -67,7 +67,7 @@ function RunScripts() {
     errorText = document.getElementById("errorText");
     SetTheme();
     updateFooter();
-    //startWorker();
+    startWorker();
     getHtmlText();
 }
 
@@ -95,7 +95,6 @@ function SwitchTheme() {
     }
 
     SetTheme();
-
 }
 
 //Part 1.2 Use JS for DOM manipulation
@@ -227,34 +226,48 @@ function showError(error) {
 }
 
 var webWorker;
+var resultDisplay = document.getElementById("result");
 
 function startWorker() {
-    var resultDisplay = document.getElementById("result");
-
     try {
         if (typeof (Worker) !== "undefined") {
             if (typeof (webWorker) == "undefined") {
                 webWorker = new Worker("js/time.js");
+                webWorker.onmessage = function (event) {
+                    resultDisplay.innerHTML = event.data;
+                };
+            } else {
+                resultDisplay.innerHTML = "Worker running";
             }
-            webWorker.onmessage = function (event) {
-                resultDisplay.innerHTML = event.data;
-            };
-        } else {
-            errorTitle.innerHTML = "Error occured";
-            errorText.className = "error";
-            errorText.innerHTML += "<li>Sorry, your browser does not support Web Workers...</li>";
         }
     } catch (error) {
         errorTitle.innerHTML = "Error occured";
         errorText.className = "error";
         errorText.innerHTML += "<li>" + error + "<br>Please try using Firefox browser</li>";
     }
+
+    
+}
+
+function messageWorker() {
+    if(webWorker){
+        var wwmessge = document.getElementById('wwmessge').value;
+        webWorker.postMessage(wwmessge);
+    } else {
+        resultDisplay.innerHTML = "Start worker first";
+    }
+    
 }
 
 function stopWorker() {
     webWorker.terminate();
     webWorker = undefined;
+    resultDisplay.innerHTML = "Worker stopped"
 }
+
+
+
+
 
 function Register() {
     var fname = document.getElementById('fname').value;

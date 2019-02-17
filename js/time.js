@@ -1,3 +1,5 @@
+var message;
+
 function checkTime(i) {
     if (i < 10) {
         i = "0" + i;
@@ -14,8 +16,17 @@ function getTime() {
     m = checkTime(m);
     s = checkTime(s);
 
-    postMessage(h + ":" + m + ":" + s);
-    setTimeout("getTime()",200);
+    if(!message || message==="reset"){
+        postMessage("Time from WebWorker: " + h + ":" + m + ":" + s);
+    } else {
+        postMessage("Got: " + message + ".");
+    }
+
+    setTimeout("getTime()",1000);
 }
+
+onmessage = function(e) {
+    message = e.data;
+  }
 
 getTime();

@@ -27,6 +27,10 @@
     </nav>
     <main>
         <article>
+            <h1 id="errorTitle"></h1>
+            <p id="errorText"></p>
+        </article>
+        <article>
             <h1>Java Script</h1>
 
             <section>
@@ -71,6 +75,100 @@ function messageWebSocket() {
         webSocketResponseHolder.innerHTML += "WebSocket is not supported by your Browser!";
     }
 }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Web Worker</h2>
+                <p>Web Workers is a simple means for web content to run scripts in background threads. The worker thread
+                    can perform tasks without interfering with the user interface. In addition, they can perform I/O
+                    using XMLHttpRequest (although the responseXML and channel attributes are always null). Once
+                    created, a worker can send messages to the JavaScript code that created it by posting messages to an
+                    event handler specified by that code (and vice versa). This article provides a detailed introduction
+                    to using web workers.</p>
+                <h4>See it in action</h4>
+                <p class="error">HINT: Web Worker dispay is loccated on the navigation bar.<br>
+                    HINT: Send 'reset' to see the time again.<br><br>
+                </p>
+                <form class="center" action="">
+                    <label for="wwmessge">Message for Web Worker</label>
+                    <input type="text" id="wwmessge" name="wwmessge" placeholder="Your name..">
+
+                    <button class="submit" onclick="messageWorker(); return false;">Send Message</button><br>
+                    <button class="submit" onclick="stopWorker(); return false;">Stop Worker</button><br>
+                    <button class="submit" onclick="startWorker(); return false;">Start Worker</button>
+                </form>
+                <p class="center" id="webSocketResponse"></p>
+                <h4>Sample JS code for the web site to manage worker.</h4>
+                <pre>
+                    <code class="language-js">
+var webWorker;
+var resultDisplay = document.getElementById("result");
+
+function startWorker() {
+    try {
+        if (typeof (Worker) !== "undefined") {
+            if (typeof (webWorker) == "undefined") {
+                webWorker = new Worker("js/time.js");
+            }
+        }
+    } catch (error) {
+        errorTitle.innerHTML = "Error occured";
+        errorText.className = "error";
+        errorText.innerHTML += "&lt;li&gt;" + error + "&lt;br&gt;Please try using Firefox browser&lt;/li&gt;";
+    }
+}
+
+function messageWorker() {
+    var wwmessge = document.getElementById('wwmessge').value;
+    webWorker.postMessage(wwmessge);
+}
+
+function stopWorker() {
+    webWorker.terminate();
+    webWorker = undefined;
+}
+
+webWorker.onmessage = function (event) {
+    resultDisplay.innerHTML = event.data;
+};
+                    </code>
+                </pre>
+                <h4>Sample worker JS code.</h4>
+                <pre>
+                    <code class="language-js">
+var message;
+
+function checkTime(i) {
+    if (i &lt; 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+
+function getTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    
+    m = checkTime(m);
+    s = checkTime(s);
+
+    if(!message || message==="reset"){
+        postMessage(" " + h + ":" + m + ":" + s);
+    } else {
+        postMessage("Got: " + message + ".");
+    }
+
+    setTimeout("getTime()",200);
+}
+
+onmessage = function(e) {
+    message = e.data;
+    }
+
+getTime();
                     </code>
                 </pre>
             </section>
