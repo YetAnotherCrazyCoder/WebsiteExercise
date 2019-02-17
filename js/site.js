@@ -65,9 +65,37 @@ window.onload = RunScripts();
 function RunScripts() {
     errorTitle = document.getElementById("errorTitle");
     errorText = document.getElementById("errorText");
+    SetTheme();
     updateFooter();
     //startWorker();
     getHtmlText();
+}
+
+function SetTheme() {
+    var themeSelected = localStorage.getItem("themeSelected");
+    var body = document.getElementById("body");
+
+    if (themeSelected === "light") {
+        body.className = "light";
+    }
+    if (themeSelected === "dark") {
+        body.className = "dark";
+    }
+}
+
+function SwitchTheme() {
+    var body = document.getElementById("body");
+    var currentClass = body.className;
+
+    if (currentClass === "dark") {
+        localStorage.setItem("themeSelected", "light");
+    }
+    if (currentClass === "light") {
+        localStorage.setItem("themeSelected", "dark");
+    }
+
+    SetTheme();
+
 }
 
 //Part 1.2 Use JS for DOM manipulation
@@ -107,17 +135,17 @@ function getHtmlText() {
                 if (this.readyState == 4 && this.status == 200) {
                     textPlaceholder.innerHTML = this.responseText;
                     textPlaceholder.className = "";
-                }
-                else {
-                    errorTitle.innerHTML = "Error occured";
-                    errorText.className = "error";
-                    errorText.innerHTML += "<li>XMLHttpRequest error. Please try using Firefox browser</li>";
+                } else {
+                    textPlaceholder.className = "error";
                 }
             };
             xhttp.open("GET", "txt/html.txt", true);
             xhttp.send();
         } catch (error) {
-            textPlaceholder.innerHTML = error;
+            errorTitle.innerHTML = "Error occured";
+            errorText.className = "error";
+            errorText.innerHTML += "<li>XMLHttpRequest error. Please try using Firefox browser</li>";
+            errorText.innerHTML += "<li>" + error + "</li>";
         }
     }
 }
@@ -125,10 +153,13 @@ function getHtmlText() {
 //Part 1.6.2 Collect user location data
 var userLocationText;
 var googleMap;
+var googleMapHeader;
 
 function getLocation() {
     userLocationText = document.getElementById('location');
     googleMap = document.getElementById("goolemap");
+    googleMapHeader = document.getElementById("googleMapHeader");
+
     if (userLocationText) {
         userLocationText.scrollIntoView();
     }
@@ -163,13 +194,15 @@ function convertDMS(position) {
 function showPosition(position) {
     userLocationText.innerHTML = "Your position is: " + convertDMS(position);
     try {
+        googleMapHeader.removeAttribute("hidden");
+        googleMap.removeAttribute("hidden");
         var googleMapURL = "https://www.google.com/maps/embed/v1/place?q=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyA-5px9IvD9XjxTBh5EpJwYRp4XC7zaMTg";
         googleMap.src = googleMapURL;
+        googleMap.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
     } catch (error) {
         errorTitle.innerHTML = "Error occured";
         errorText.className = "error";
         errorText.innerHTML += "<li>" + error + "</li>";
-        
     }
 }
 
@@ -223,19 +256,45 @@ function stopWorker() {
     webWorker = undefined;
 }
 
-function Register(){
+function Register() {
     var fname = document.getElementById('fname').value;
     var lname = document.getElementById('lname').value;
     var email = document.getElementById('email').value;
-    
+
     var password = document.getElementById('password').value;
     var rpassword = document.getElementById('rpassword').value;
 
     console.log(password + " " + rpassword);
-    
-    if(password === rpassword){
+
+    if (password === rpassword) {
         window.alert("This would process registration on backend");
     } else {
-        window.alert("Password and Repeat Password does not match");    
+        window.alert("Password and Repeat Password does not match");
+    }
+}
+
+
+function messageWebSocket() {
+
+    if ("WebSocket" in window) {
+        var webSocket = new WebSocket("wss://echo.websocket.org/");
+        var fname = document.getElementById('fname').value;
+        var webSocketResponseHolder = document.getElementById("webSocketResponse");
+
+        webSocket.onopen = function () {
+            webSocketResponseHolder.innerHTML += "<br>Sending <strong>" + fname + "</strong> to WebSocket.";
+            webSocket.send(fname);
+        };
+
+        webSocket.onmessage = function (evt) {
+            var webSocketResponse = evt.data;
+            webSocketResponseHolder.innerHTML += "<br>WebSocket responded: Hello " + webSocketResponse + " how are you?";
+        };
+
+        webSocket.onclose = function () {
+            webSocketResponseHolder.innerHTML += "<br>WebSocket closet the connection.";
+        };
+    } else {
+        webSocketResponseHolder.innerHTML += "WebSocket is not supported by your Browser!";
     }
 }

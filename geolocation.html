@@ -13,7 +13,7 @@
     <title>HTML CSS3 JS</title>
 </head>
 
-<body>
+<body id="body" class="light">
     <nav class="topnav" id="navBar">
         <output id="result"></output>
         <a href="index.html"><i class="fas fa-home"></i></a>
@@ -32,26 +32,120 @@
         </article>
         <article>
             <h1>HTML5 Geolocation</h1>
-            <button class="submit" onclick="getLocation(); return false;">Locate Me</button>
-            <p id='location'>Location Data</p>
-            <iframe id="map" width="600" height="600" frameborder="0" style="border:0" allowfullscreen>
-                </iframe>
+            <p>The Geolocation API allows the user to provide their location to web applications if they so desire. For
+                privacy reasons, the user is asked for permission to report location information.</p>
+            <section class="center">
+                <h2>Check your location</h2>
+                <button class="submit" onclick="getLocation();">Locate Me</button>
+                <p id='location' class="center"></p>
+                <h3 id="googleMapHeader" hidden>Google Map</h3>
+                <iframe id="goolemap" src="" frameborder="0" allowfullscreen hidden></iframe>
+            </section>
             <pre>
-                    <code class="language-html">
+                <code class="language-html">
+&lt;section class="center"&gt;
+    &lt;h2&gt;Check your location&lt;/h2&gt;
+    &lt;button class="submit" onclick="getLocation(); return false;"&gt;Locate Me&lt;/button&gt;
+    &lt;p id='location' class="center"&gt;&lt;/p&gt;
+    &lt;h3 id="googleMapHeader" hidden&gt;Google Map&lt;/h3&gt;
+    &lt;iframe id="goolemap" src="" frameborder="0" allowfullscreen hidden&gt;&lt;/iframe&gt;
+&lt;/section&gt;
+        </code>
+            </pre>
 
+            <pre>
+
+                    <code class="language-js">
+var userLocationText;
+var googleMap;
+var googleMapHeader;
+
+function getLocation() {
+    userLocationText = document.getElementById('location');
+    googleMap = document.getElementById("goolemap");
+    googleMapHeader = document.getElementById("googleMapHeader");
+
+    if (userLocationText) {
+        userLocationText.scrollIntoView();
+    }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        errorTitle.innerHTML = "Error occured";
+        errorText.className = "error";
+        errorText.innerHTML += "&lt;li&gt;Geolocation is not supported by this browser.&lt;/li&gt;";
+    }
+}
+
+function toDegreesMinutesAndSeconds(coordinate) {
+    var absolute = Math.abs(coordinate);
+    var degrees = Math.floor(absolute);
+    var minutesNotTruncated = (absolute - degrees) * 60;
+    var minutes = Math.floor(minutesNotTruncated);
+    var seconds = Math.floor((minutesNotTruncated - minutes) * 60);
+    return degrees + "&deg;" + minutes + "&prime;" + seconds + "&Prime; ";
+}
+
+function convertDMS(position) {
+    var latitude = toDegreesMinutesAndSeconds(position.coords.latitude);
+    var latitudeCardinal = Math.sign(position.coords.latitude) &gt;= 0 ? "N" : "S";
+
+    var longitude = toDegreesMinutesAndSeconds(position.coords.longitude);
+    var longitudeCardinal = Math.sign(position.coords.longitude) &gt;= 0 ? "E" : "W";
+
+    return latitude + latitudeCardinal + " &ensp;" + longitude + longitudeCardinal;
+}
+
+function showPosition(position) {
+    userLocationText.innerHTML = "Your position is: " + convertDMS(position);
+    try {
+        googleMapHeader.removeAttribute("hidden");
+        googleMap.removeAttribute("hidden");
+        var googleMapURL = "https://www.google.com/maps/embed/v1/place?q=" 
+            + position.coords.latitude + "," + position.coords.longitude 
+            + "&key=[your google map api key]";
+        googleMap.src = googleMapURL;
+        googleMap.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+    } catch (error) {
+        errorTitle.innerHTML = "Error occured";
+        errorText.className = "error";
+        errorText.innerHTML += "&lt;li&gt;" + error + "&lt;/li&gt;";
+    }
+}
+
+function showError(error) {
+    errorTitle.innerHTML = "Error occured";
+    errorText.className = "error";
+
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            errorText.innerHTML += "&lt;li&gt;You denied the request for Geolocation." + "&lt;/li&gt;";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            errorText.innerHTML += "&lt;li&gt;Location information is unavailable." + "&lt;/li&gt;";
+            break;
+        case error.TIMEOUT:
+            errorText.innerHTML += "&lt;li&gt;The request to get your location timed out." + "&lt;/li&gt;";
+            break;
+        case error.UNKNOWN_ERROR:
+            errorText.innerHTML += "&lt;li&gt;An unknown error occurred." + "&lt;/li&gt;";
+            break;
+    }
+}
                     </code>
                 </pre>
         </article>
     </main>
+
     <footer>
         <p id="footerText"></p>
     </footer>
 
-    <script src="js/site.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+    <script src="js/site.js"></script>
 </body>
 
 </html>

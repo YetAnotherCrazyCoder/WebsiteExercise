@@ -83,3 +83,29 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
+
+
+function messageWebSocket() {
+
+    if ("WebSocket" in window) {
+        var webSocket = new WebSocket("wss://echo.websocket.org/");
+        var fname = document.getElementById('fname').value;
+        var webSocketResponseHolder = document.getElementById("webSocketResponse");
+
+        webSocket.onopen = function () {
+            webSocketResponseHolder.innerHTML += "&lt;br&gt;Sending &lt;strong&gt;" + fname + "&lt;/strong&gt; to WebSocket.";
+            webSocket.send(fname);
+        };
+
+        webSocket.onmessage = function (evt) {
+            var webSocketResponse = evt.data;
+            webSocketResponseHolder.innerHTML += "&lt;br&gt;WebSocket responded: Hello " + webSocketResponse + " how are you?";
+        };
+
+        webSocket.onclose = function () {
+            webSocketResponseHolder.innerHTML += "&lt;br&gt;WebSocket closet the connection.";
+        };
+    } else {
+        webSocketResponseHolder.innerHTML += "WebSocket is not supported by your Browser!";
+    }
+}

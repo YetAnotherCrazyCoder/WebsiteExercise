@@ -12,6 +12,86 @@ html, body{
     -webkit-font-smoothing: antialiased;
 }
 
+.dark{
+    background-color: #222;
+    color: #ccc;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4{
+    color: rgb(22, 153, 230);
+}
+
+.dark form{
+    background-color: #111;
+}
+
+.dark form ::placeholder{
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.dark input[type=text], .dark input[type=email], .dark input[type=password], .dark select, .dark textarea {
+    border: 1px solid #555;
+    background-color: #222;
+}
+
+.dark p code{
+    color: #5db5db;
+    background-color:rgb(43, 43, 43);
+}
+
+.dark main a{
+    color: rgb(121, 197, 241);
+    text-decoration: none;
+}
+
+.dark main a:visited {
+    color: rgb(121, 197, 241);
+}
+
+.dark main a:hover {
+    color: rgb(73, 226, 226);
+}
+
+.light{
+    background-color: #fff;
+    color: #222;
+}
+
+.light h1, .light h2, .light h3, .light h4{
+    color: rgb(10, 83, 126);
+}
+
+.light form{
+    background-color: #f2f2f2;
+}
+
+.light form ::placeholder{
+    color: rgba(0, 0, 0, .3);
+}
+
+.light input[type=text], .light input[type=email], .light input[type=password], .light select, .light textarea {
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.light p code{
+    color: #3d7e9a;
+    background-color:rgb(253, 238, 222);
+}
+
+.light main a{
+    color: rgb(18, 105, 155);
+    text-decoration: none;
+}
+
+.light main a:visited {
+    color: rgb(18, 105, 155);
+}
+
+.light main a:hover {
+    color: rgb(52, 168, 168);
+}
+
 main{
     margin: auto;
 }
@@ -22,7 +102,6 @@ article ul li{
 
 h1, h2, h3, h4{
     font-family: 'Raleway', sans-serif;
-    color: rgb(10, 83, 126);
     text-align: justify;
     text-justify: newspaper;
     padding: 0px 10px;
@@ -38,7 +117,7 @@ p{
 }
 
 img{
-    max-width: 70vw;
+    width: 90%;
     margin: 20px 0px;
     display: block;
     margin-left: auto;
@@ -48,13 +127,6 @@ img{
 pre {
     font-size: 86%;
 }
-
-p code{
-    color: #3d7e9a;
-    background-color:rgb(253, 238, 222);
-}
-
-
 
 #location{
     word-wrap: break-word;
@@ -119,6 +191,10 @@ p code{
     text-decoration: none;
     text-shadow: 0px 0px 5px #333;
     box-shadow: 0px 0px 15px #333;
+}
+
+.content .btn:visited{
+    color: rgb(255, 230, 205);
 }
 
 .content .btn:hover{
@@ -240,7 +316,7 @@ nav .icon {
   }
 
 .white-shadow:after{
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, .9) 85%);
+    
     bottom: 100%;
     content: '';
     display: inline-block;
@@ -248,6 +324,14 @@ nav .icon {
     position: absolute;
     right: 0;
     width: 100%;
+}
+
+.light .white-shadow:after{
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, .9) 85%);
+}
+
+.dark .white-shadow:after{
+    background: linear-gradient(to bottom, rgba(34, 34, 34, 0), rgba(34, 34, 34, 0.9) 85%);
 }
 
 footer {
@@ -279,21 +363,12 @@ form{
     width: 300px;
     margin: auto;
     border-radius: 5px;
-    background-color: #f2f2f2;
     padding: 20px;
-}
-
-form ::placeholder{
-    color: rgba(0, 0, 0, .3);
-
-
 }
 
 input[type=text], input[type=email], input[type=password], select, textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
-    background-color: white;
     border-radius: 4px;
     box-sizing: border-box;
     margin-top: 6px;
@@ -302,21 +377,37 @@ input[type=text], input[type=email], input[type=password], select, textarea {
 }
   
 .submit {
+    width: 150px;
+    height: 40px;
     background-color: #4CAF50;
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: width 0.2s;
+    transition-timing-function: linear;
+    -webkit-transition: width 0.2s; /* Safari */
+    -webkit-transition-timing-function: linear;
 }
   
 .submit:hover {
-    background-color: #45a049;
+    background-color: #357a39;
+    width: 200px;
 }
 
 .center{
     text-align: center;
 }
+
+iframe{
+    width: 100%;
+    height: 70vh;
+    margin: auto;
+    border: none;
+    border-style: hidden;
+}
+
 
 
   
@@ -424,14 +515,14 @@ input[type=text], input[type=email], input[type=password], select, textarea {
 
 @media screen and (min-width: 1080px) {
     main{
-        width: 66vw;
+        width: 60vw;
         margin: auto;
     }
 }
 
 @media screen and (min-width: 1920px) {
     main{
-        width: 50vw;
+        width: 40vw;
         margin: auto;
     }
 }
