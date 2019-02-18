@@ -1,61 +1,3 @@
-//document.getElementById("demo").innerHTML = "Hello World!";
-//document.getElementsByTagName(name)
-//document.getElementsByClassName(name)
-//https://www.w3schools.com/js/js_htmldom_elements.asp
-
-// Changing HTML Elements
-// Method	Description
-// element.innerHTML =  new html content	Change the inner HTML of an element
-// element.attribute = new value	Change the attribute value of an HTML element
-// element.setAttribute(attribute, value)	Change the attribute value of an HTML element
-// element.style.property = new style	Change the style of an HTML element
-
-//document.getElementById("myImage").src = "landscape.jpg";
-//document.getElementById("p2").style.color = "blue";
-
-
-// Adding and Deleting Elements
-// Method	Description
-// document.createElement(element)	Create an HTML element
-// document.removeChild(element)	Remove an HTML element
-// document.appendChild(element)	Add an HTML element
-// document.replaceChild(element)	Replace an HTML element
-// document.write(text)	Write into the HTML output stream
-
-// Adding Events Handlers
-// Method	Description
-// document.getElementById(id).onclick = function(){code}
-// document.getElementById("myBtn").onclick = displayDate;
-// <button onclick="displayDate()">Try it</button>
-
-// Property	Description	DOM
-// document.anchors	Returns all <a> elements that have a name attribute	1
-// document.applets	Returns all <applet> elements (Deprecated in HTML5)	1
-// document.baseURI	Returns the absolute base URI of the document	3
-// document.body	Returns the <body> element	1
-// document.cookie	Returns the document's cookie	1
-// document.doctype	Returns the document's doctype	3
-// document.documentElement	Returns the <html> element	3
-// document.documentMode	Returns the mode used by the browser	3
-// document.documentURI	Returns the URI of the document	3
-// document.domain	Returns the domain name of the document server	1
-// document.domConfig	Obsolete. Returns the DOM configuration	3
-// document.embeds	Returns all <embed> elements	3
-// document.forms	Returns all <form> elements	1
-// document.head	Returns the <head> element	3
-// document.images	Returns all <img> elements	1
-// document.implementation	Returns the DOM implementation	3
-// document.inputEncoding	Returns the document's encoding (character set)	3
-// document.lastModified	Returns the date and time the document was updated	3
-// document.links	Returns all <area> and <a> elements that have a href attribute	1
-// document.readyState	Returns the (loading) status of the document	3
-// document.referrer	Returns the URI of the referrer (the linking document)	1
-// document.scripts	Returns all <script> elements	3
-// document.strictErrorChecking	Returns if error checking is enforced	3
-// document.title	Returns the <title> element	1
-// document.URL	Returns the complete URL of the document	1
-
-
 var errorTitle;
 var errorText;
 
@@ -70,7 +12,9 @@ function RunScripts() {
     startWorker();
     getHtmlText();
 }
+//END OF Event handling code for onload event
 
+//Part 1.8 Implement an adaptive user interface
 function SetTheme() {
     var themeSelected = localStorage.getItem("themeSelected");
     var body = document.getElementById("body");
@@ -96,6 +40,7 @@ function SwitchTheme() {
 
     SetTheme();
 }
+//END OF Adaptive user interface code
 
 //Part 1.2 Use JS for DOM manipulation
 //Function updates the footer text so the copyright year is a current year
@@ -122,6 +67,7 @@ function switchNavbar() {
         navbtn.className = "fa fa-bars";
     }
 }
+//END OF DOM manipulation coode
 
 //Part 1.4 Use XMLHttpRequest objects to comunicate data
 //Function is using XMLHttpRequest to retrive file content and to display it
@@ -148,6 +94,7 @@ function getHtmlText() {
         }
     }
 }
+//END OF XMLHttpRequest Code
 
 //Part 1.6.2 Collect user location data
 var userLocationText;
@@ -224,7 +171,9 @@ function showError(error) {
             break;
     }
 }
+//END OF Geolocation code
 
+//Part 1.12 Create, run and monitor a Web Worker process
 var webWorker;
 var resultDisplay = document.getElementById("result");
 
@@ -245,8 +194,6 @@ function startWorker() {
         errorText.className = "error";
         errorText.innerHTML += "<li>" + error + "<br>Please try using Firefox browser</li>";
     }
-
-    
 }
 
 function messageWorker() {
@@ -256,7 +203,6 @@ function messageWorker() {
     } else {
         resultDisplay.innerHTML = "Start worker first";
     }
-    
 }
 
 function stopWorker() {
@@ -264,11 +210,9 @@ function stopWorker() {
     webWorker = undefined;
     resultDisplay.innerHTML = "Worker stopped"
 }
+//END OF Web Worker Code
 
-
-
-
-
+//Part 1.3 Create an operational web form using HTML5
 function Register() {
     var fname = document.getElementById('fname').value;
     var lname = document.getElementById('lname').value;
@@ -285,10 +229,10 @@ function Register() {
         window.alert("Password and Repeat Password does not match");
     }
 }
+//END OF Web Form Code
 
-
+//Part 1.11 Use Web Sockets API with JS to send and receive real time communications data
 function messageWebSocket() {
-
     if ("WebSocket" in window) {
         var webSocket = new WebSocket("wss://echo.websocket.org/");
         var fname = document.getElementById('fname').value;
@@ -311,3 +255,4 @@ function messageWebSocket() {
         webSocketResponseHolder.innerHTML += "WebSocket is not supported by your Browser!";
     }
 }
+//END OF Web Socket code

@@ -1,3 +1,5 @@
+/* Part 1.1 Create HTML5 web pages using HTML5 elements and attributes and CSS3 style sheets */
+/* Part 1.5 Use CSS Style sheets and selectors to style HTML5 to style block elements and texts */
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
@@ -376,7 +378,10 @@ input[type=text], input[type=email], input[type=password], select, textarea {
     margin-bottom: 16px;
     resize: vertical;
 }
-  
+
+
+/* Part 1.10 Use CSS transitions for elements on an HTML5 pageto animate user Interface */
+/* for example register button on registration form */
 .submit {
     width: 150px;
     height: 40px;

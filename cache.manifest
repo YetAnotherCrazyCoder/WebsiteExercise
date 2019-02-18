@@ -1,6 +1,8 @@
 CACHE MANIFEST
 # v8
 
+# Part 1.7 Support offline applications
+
 NETWORK:
 media/bensound-energy.mp3
 

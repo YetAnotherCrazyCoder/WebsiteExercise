@@ -1,3 +1,5 @@
+// Part 1.9.2 Use the HTML canvas element
+
 // Drawing with text. Ported from Generative Design book - http://www.generative-gestaltung.de - Original licence: http://www.apache.org/licenses/LICENSE-2.0
 
 // Application variables
