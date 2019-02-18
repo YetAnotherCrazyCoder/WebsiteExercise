@@ -30,4 +30,4 @@ FALLBACK:
 geolocation.html offline.html
 media.html offline.html
 register.html offline.html
-CSS_Modules_and_Snapshots.png no-internet-connection.jpg
+media/CSS_Modules_and_Snapshots.png media/no-internet-connection.jpg
