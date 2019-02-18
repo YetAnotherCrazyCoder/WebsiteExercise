@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# v2
+
+NETWORK:
+geolocation.html
+
+CACHE:
+media/css3.svg
+media/html.svg
+media/js.svg
+media/map-marked-alt-solid.svg
+media/compact-disc-solid.svg
+media/pexels-photo-1449082.jpeg
+index.html
+
+FALLBACK:
+geolocation.html offline.html
