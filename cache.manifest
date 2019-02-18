@@ -1,17 +1,33 @@
 CACHE MANIFEST
-# v2
+# v3
 
 NETWORK:
+media/bensound-energy.mp3
 geolocation.html
+js.html
+
 
 CACHE:
+css/normalize.css
+css/style.css
+js/canvas.js
+js/site.js
+js/time.js
 media/css3.svg
 media/html.svg
 media/js.svg
 media/map-marked-alt-solid.svg
 media/compact-disc-solid.svg
 media/pexels-photo-1449082.jpeg
+media/no-internet-connection.jpg
+txt/html.txt
 index.html
+html.html
+css.html
+
 
 FALLBACK:
 geolocation.html offline.html
+media.html offline.html
+register.html offline.html
+CSS_Modules_and_Snapshots.png no-internet-connection.jpg
