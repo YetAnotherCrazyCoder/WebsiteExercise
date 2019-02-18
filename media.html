@@ -31,6 +31,14 @@
         </article>
         <article>
             <h1>HTML5 Media</h1>
+            <p>Multimedia comes in many different formats. It can be almost anything you can hear or see.
+                Examples: Images, music, sound, videos, records, films, animations, and more.
+                Web pages often contain multimedia elements of different types and formats.
+                Multimedia elements (like audio or video) are stored in media files.
+                The most common way to discover the type of a file, is to look at the file extension.
+                Multimedia files have formats and different extensions like: .swf, .wav, .mp3, .mp4, .mpg, .wmv, and
+                .avi.
+            </p>
             <section class="center">
                 <h2>Video</h2>
                 <p>The HTML Video element (&lt;video&gt;) embeds a media player which supports video playback into the
@@ -84,7 +92,6 @@
                 </pre>
             </section>
 
-
             <section class="center">
                 <h2>Canvas</h2>
                 <p>The Canvas API provides a means for drawing graphics via JavaScript and the HTML
@@ -120,7 +127,8 @@ var letters = "HTML5 is the latest evolution of the standard that "
     + "a new version of the language HTML, with new elements, attributes, "
     + "and behaviors, and a larger set of technologies that allows the "
     + "building of more diverse and powerful Web sites and applications. "
-    + "This set is sometimes called HTML5 & friends and often shortened to just HTML5.";
+    + "This set is sometimes called HTML5 & friends and often shortened "
+    + "to just HTML5.";
 
 // Drawing variables
 var canvas;
@@ -228,7 +236,59 @@ init();
                         </code>
                     </pre>
             </section>
+            <section class="center">
+                <h2>SVG</h2>
+                <p>Scalable Vector Graphics (SVG) is an XML-based markup language for describing two dimensional based
+                    vector graphics. SVG is essentially to graphics what HTML is to text.</p>
 
+                <p> SVG is a text-based open Web standard. It is explicitly designed to work with other web standards
+                    such as CSS, DOM, and SMIL.</p>
+
+                <p>SVG images and their related behaviors are defined in XML text files which means they can be
+                    searched, indexed, scripted and compressed. Additionally this means they can be created and edited
+                    with any text editor and with drawing software.<br><br> </p>
+                <svg id="activeSVG" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <style>
+                        .heavy {
+                            font: bold 10px sans-serif;
+                        }
+                    </style>
+                    <rect width="100%" height="100%" fill="red" />
+                    <circle stroke-width="2" stroke="none" fill="white" cx="150" cy="100" r="50">
+                        <animate attributeType="XML" attributeName="r" to="90" 
+                        fill="freeze" begin="activeSVG.click" dur="3s" />
+                    </circle>
+                    <text class="heavy" x="115" y="105">Click the Circle!
+                        <animate attributeType="XML" attributeName="y" 
+                        to="-20" fill="freeze" begin="activeSVG.click" dur="2s" />
+                    </text>
+                </svg>
+
+            </section>
+            <section>
+                <h3>Code</h3>
+                <p>Sample HTML5 Code for interactive SVG:</p>
+                <pre>
+                        <code class="language-html">
+&lt;svg id="activeSVG" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;style&gt;
+        .heavy {
+            font: bold 10px sans-serif;
+        }
+    &lt;/style&gt;
+    &lt;rect width="100%" height="100%" fill="red" /&gt;
+    &lt;circle stroke-width="2" stroke="none" fill="white" cx="150" cy="100" r="50"&gt;
+        &lt;animate attributeType="XML" attributeName="r" to="90" fill="freeze" begin="activeSVG.click"
+            dur="3s" /&gt;
+    &lt;/circle>
+    &lt;text class="heavy" x="115" y="105">Click the Circle!
+        &lt;animate attributeType="XML" attributeName="y" to="-20" fill="freeze" begin="activeSVG.click"
+            dur="2s" /&gt;
+    &lt;/text&gt;
+&lt;/svg&gt;     
+                        </code>
+                    </pre>
+            </section>
 
         </article>
     </main>
