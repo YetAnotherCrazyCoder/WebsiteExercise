@@ -1,11 +1,8 @@
 CACHE MANIFEST
-# v7
+# v8
 
 NETWORK:
 media/bensound-energy.mp3
-geolocation.html
-js.html
-
 
 CACHE:
 css/normalize.css
@@ -34,15 +31,13 @@ txt/html.txt
 index.html
 html.html
 css.html
-https://use.fontawesome.com/releases/v5.6.3/css/all.css
 https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css
 https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
 https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js
 
-
-
 FALLBACK:
 geolocation.html offline.html
+js.html offline.html
 media.html offline.html
 register.html offline.html
 media/CSS_Modules_and_Snapshots.png media/no-internet-connection.jpg
