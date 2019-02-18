@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v6
+# v7
 
 NETWORK:
 media/bensound-energy.mp3
@@ -10,6 +10,16 @@ js.html
 CACHE:
 css/normalize.css
 css/style.css
+font/css/all.css
+font/webfonts/fa-brands-400.ttf
+font/webfonts/fa-brands-400.woff
+font/webfonts/fa-brands-400.woff2
+font/webfonts/fa-regular-400.ttf
+font/webfonts/fa-regular-400.woff
+font/webfonts/fa-regular-400.woff2
+font/webfonts/fa-solid-900.ttf
+font/webfonts/fa-solid-900.woff
+font/webfonts/fa-solid-900.woff2
 js/canvas.js
 js/site.js
 js/time.js
